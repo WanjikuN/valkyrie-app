@@ -1,9 +1,14 @@
 kind: Deployment
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: valkyrie-dev
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: valkyrie-app
+      env: dev
+      role: frontend-backend
   template:
     metadata:
       name: valkyrie-app
